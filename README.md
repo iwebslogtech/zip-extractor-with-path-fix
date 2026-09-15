@@ -1,25 +1,42 @@
-# zip-extractor-with-path-fix
-A Python tool for robustly extracting multiple ZIP files into named folders, automatically handling and shortening long file or folder names that would otherwise fail extraction on Windows due to path length limits. Skips, truncates, and warns about problematic filenaming, making it perfect for backup, archiving, and shared drives.
+# ZIP Extractor with Path Fix
 
-# zip-extractor-with-path-fix
-A Python utility for batch extracting ZIP archives into automatically created, uniquely named folders. This script handles Windows path length limitations by automatically shortening long filenames and folder names during extraction, so your files aren't lost to "Path Too Long" errors.
+A desktop Python application for safely extracting one or many ZIP archives while automatically fixing Windows path-length problems, invalid filename characters, collisions, and unsafe archive paths.
 
-## Features
-- Extracts all `.zip` files in a folder to their own named folders
-- Detects and handles paths/names that exceed Windows path length limits
-- Truncates or modifies long filenames/folders automatically, with warnings
-- Skips files that can't be extracted (such as for other OS errors), but continues extracting the rest
-- Clean, simple, and robust code—ideal for backup and archiving use-cases
+## Highlights
 
-## Usage
-1. **Clone this repo** or copy the script
-2. **Install Python (3.7+)**
-3. **Edit the script** to set your source folder (`parent_folder = Path(...)`).
-4. **Run the script**
+- Native desktop GUI built with Tkinter, with no third-party runtime dependencies
+- Add individual ZIP files or scan a folder for archives
+- Extract each archive into a separate named folder
+- Configurable maximum path length, defaulting to 220 characters
+- Deterministic hashed shortening to reduce accidental filename collisions
+- Protection against Zip Slip paths such as `../outside.txt`
+- Cleans Windows-invalid names and reserved device names
+- Optional overwrite behavior and timestamp preservation
+- Responsive background extraction, progress indicator, activity log, and cancellation
+- Works on Windows, macOS, and Linux with Python 3.9+
 
+## Run
+
+```bash
+python app.py
+```
+
+On Windows, you can also double-click `run.bat`.
+
+## Build a Windows EXE
+
+```bat
+build_windows.bat
+```
+
+This installs PyInstaller and creates `dist\ZIP-Extractor-Path-Fix.exe`.
+
+## Notes
+
+- Password-protected ZIP files are reported as skipped unless Python can read them without a password.
+- Existing destination folders receive a numbered suffix by default. Enable overwrite if you want matching files replaced.
+- A shorter output-folder location provides more room for filenames.
 
 ## License
-This project is released under the Creative Commons Zero v1.0 Universal license (CC0). This means you may use, modify, and distribute this code for any purpose, without asking permission. See [LICENSE](LICENSE) for details.
 
-## Contribution
-Contributions, bug reports, and improvements are welcome!
+Released under the CC0 1.0 Universal dedication. See `LICENSE`.
