@@ -2,6 +2,8 @@
 
 A desktop Python application for safely extracting one or many ZIP archives while automatically fixing Windows path-length problems, invalid filename characters, collisions, and unsafe archive paths.
 
+A desktop Python application for batch extracting ZIP files while automatically fixing Windows path length issues, invalid filenames, unsafe archive paths, and naming conflicts.
+
 ## Highlights
 
 - Native desktop GUI built with Tkinter, with no third-party runtime dependencies
